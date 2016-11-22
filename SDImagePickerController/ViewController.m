@@ -53,22 +53,27 @@
 -(void)click:(UIButton *)sender{
     
     SDImagePickerController *pickerController=[[SDImagePickerController alloc]initWithMaxImagesCount:9 columnNumber:3 delegate:self];
-    UINavigationController *nav =[[UINavigationController alloc]initWithRootViewController:pickerController];
+    UINavigationController *pickerNav =[[UINavigationController alloc]initWithRootViewController:pickerController];
     if (_isSelectedPhotoArray.count!=0) {
         pickerController.selectedAssets = _isSelectedPhotoArray;
     }
     //最小选择数
     pickerController.minImagesCount = 1;
     pickerController.photoPreviewMaxWidth = 600;
+    //是否显示相机
     pickerController.cameraBtn = YES;
+    //排序方式
     pickerController.sortAscendingByModificationDate =NO;
-    // i.browserSelect =YES;      游览选择暂时未做，后续会添加上去，
-    //i.pickingVideo =NO;        暂时未做，后续会添加
+    //相册选择
     pickerController.pickingImage = YES;
-    [self.navigationController presentViewController:nav animated:YES completion:nil];
+    [self.navigationController presentViewController:pickerNav animated:YES completion:nil];
+    
     
 }
 
+
+// i.browserSelect =YES;      游览选择暂时未做，后续会添加上去，
+//i.pickingVideo =NO;        暂时未做，后续会添加
 
 #pragma mark ---SDImagePickControllerDelegate
 -(void)imagePickerController:(SDImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
