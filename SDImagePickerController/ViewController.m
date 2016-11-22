@@ -98,9 +98,6 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     SDShowCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SDShowCell" forIndexPath:indexPath];
     cell.imageView.image =_photosArray[indexPath.row];
-    UIImage *iamge2 =_photosArray[indexPath.row];
-    NSLog(@"===%@",iamge2);
-    
     return cell;
 }
 

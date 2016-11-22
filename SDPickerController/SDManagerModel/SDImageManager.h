@@ -26,7 +26,7 @@
 @property (nonatomic, assign) CGFloat photoPreviewMaxWidth; // 默认600像素宽
 
 /**
-    需要展示照片的列数，通过此确定要取出的image size
+    ==需要展示照片的列数，通过此确定要取出的image size
  */
 @property (nonatomic, assign) NSInteger columnNumber;
 /**
