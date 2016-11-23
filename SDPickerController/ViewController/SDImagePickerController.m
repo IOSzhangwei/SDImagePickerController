@@ -11,7 +11,7 @@
 #import "SDAssetCell.h"
 #import "BottomToolBar.h"
 #import "PhotoAlbumView.h"
-
+#import "AuthorityView.h"
 
 
 @interface SDImagePickerController ()<UICollectionViewDelegate,UICollectionViewDataSource>{
@@ -31,6 +31,7 @@
 
 @property(nonatomic,assign)BOOL albumSelected;
 
+@property(nonatomic,strong)AuthorityView *authorityView;
 @end
 
 @implementation SDImagePickerController
@@ -93,12 +94,13 @@
     
     if (![[SDImageManager manager] authorizationStatusAuthorized]) {
         
-        UILabel *label =[[UILabel alloc]initWithFrame:CGRectMake(30, 60, 200, 60)];
-        label.backgroundColor =[UIColor redColor];
-        label.text =@"请先获取授权";
-        [self.view bringSubviewToFront:label];
-        [self.view addSubview:label];
-        NSLog(@"请先获取授权");
+        _collectionView.hidden =YES;
+        _authorityView =[[AuthorityView alloc]init];
+        _authorityView.backgroundColor =[UIColor clearColor];
+        //[self.view bringSubviewToFront:_authorityView];
+        [self.view addSubview:_authorityView];
+        _authorityView.sd_layout.widthIs(WIDTH).centerXEqualToView(self.view).centerYEqualToView(self.view);
+        [_authorityView setupAutoHeightWithBottomView:_authorityView.setupBtn bottomMargin:10];
         _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(observeAuthrizationStatusChange) userInfo:nil repeats:YES];
         
     }else{

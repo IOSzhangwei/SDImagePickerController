@@ -21,6 +21,7 @@
 		04358CA41DE3254D00F5DD53 /* UIView+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CA31DE3254D00F5DD53 /* UIView+SD.m */; };
 		04358CA71DE3287200F5DD53 /* SDAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CA61DE3287200F5DD53 /* SDAssetModel.m */; };
 		04358CAB1DE32DEA00F5DD53 /* SDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CAA1DE32DEA00F5DD53 /* SDImageManager.m */; };
+		72F8BE3E1DE5A2F9002F0C54 /* AuthorityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */; };
 		72FCCAAF1DE41B3200FDC056 /* SDAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72FCCAAE1DE41B3200FDC056 /* SDAssetCell.m */; };
 		72FCCAB41DE41EED00FDC056 /* BottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 72FCCAB11DE41EED00FDC056 /* BottomToolBar.m */; };
 		72FCCAB51DE41EED00FDC056 /* PhotoAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72FCCAB31DE41EED00FDC056 /* PhotoAlbumView.m */; };
@@ -94,6 +95,8 @@
 		04358CA81DE328FC00F5DD53 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04358CA91DE32DEA00F5DD53 /* SDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageManager.h; sourceTree = "<group>"; };
 		04358CAA1DE32DEA00F5DD53 /* SDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageManager.m; sourceTree = "<group>"; };
+		72F8BE3C1DE5A2F9002F0C54 /* AuthorityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityView.h; sourceTree = "<group>"; };
+		72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityView.m; sourceTree = "<group>"; };
 		72FCCAAD1DE41B3200FDC056 /* SDAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAssetCell.h; sourceTree = "<group>"; };
 		72FCCAAE1DE41B3200FDC056 /* SDAssetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDAssetCell.m; sourceTree = "<group>"; };
 		72FCCAB01DE41EED00FDC056 /* BottomToolBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomToolBar.h; sourceTree = "<group>"; };
@@ -267,6 +270,8 @@
 				72FCCAB11DE41EED00FDC056 /* BottomToolBar.m */,
 				72FCCAB21DE41EED00FDC056 /* PhotoAlbumView.h */,
 				72FCCAB31DE41EED00FDC056 /* PhotoAlbumView.m */,
+				72F8BE3C1DE5A2F9002F0C54 /* AuthorityView.h */,
+				72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 				04358C591DE3228B00F5DD53 /* main.m in Sources */,
 				04358C9D1DE324CE00F5DD53 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				72FCCAAF1DE41B3200FDC056 /* SDAssetCell.m in Sources */,
+				72F8BE3E1DE5A2F9002F0C54 /* AuthorityView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
