@@ -22,7 +22,6 @@
 		04358CA71DE3287200F5DD53 /* SDAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CA61DE3287200F5DD53 /* SDAssetModel.m */; };
 		04358CAB1DE32DEA00F5DD53 /* SDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CAA1DE32DEA00F5DD53 /* SDImageManager.m */; };
 		72F8BE3E1DE5A2F9002F0C54 /* AuthorityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */; };
-		72F8BE7A1DE5AF72002F0C54 /* Mytools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72F8BE791DE5AF72002F0C54 /* Mytools.bundle */; };
 		72F8BE7D1DE5AFDC002F0C54 /* UIImage+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8BE7C1DE5AFDC002F0C54 /* UIImage+SD.m */; };
 		72FCCAAF1DE41B3200FDC056 /* SDAssetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 72FCCAAE1DE41B3200FDC056 /* SDAssetCell.m */; };
 		72FCCAB41DE41EED00FDC056 /* BottomToolBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 72FCCAB11DE41EED00FDC056 /* BottomToolBar.m */; };
@@ -82,7 +81,6 @@
 		04358CAA1DE32DEA00F5DD53 /* SDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageManager.m; sourceTree = "<group>"; };
 		72F8BE3C1DE5A2F9002F0C54 /* AuthorityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityView.h; sourceTree = "<group>"; };
 		72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityView.m; sourceTree = "<group>"; };
-		72F8BE791DE5AF72002F0C54 /* Mytools.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mytools.bundle; sourceTree = "<group>"; };
 		72F8BE7B1DE5AFDC002F0C54 /* UIImage+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SD.h"; sourceTree = "<group>"; };
 		72F8BE7C1DE5AFDC002F0C54 /* UIImage+SD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+SD.m"; sourceTree = "<group>"; };
 		72FCCAAD1DE41B3200FDC056 /* SDAssetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAssetCell.h; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 		72FCCAB91DE4233000FDC056 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				72F8BE791DE5AF72002F0C54 /* Mytools.bundle */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -385,7 +382,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72F8BE7A1DE5AF72002F0C54 /* Mytools.bundle in Resources */,
 				04358C671DE3228B00F5DD53 /* LaunchScreen.storyboard in Resources */,
 				04358C641DE3228B00F5DD53 /* Assets.xcassets in Resources */,
 				04358C621DE3228B00F5DD53 /* Main.storyboard in Resources */,
