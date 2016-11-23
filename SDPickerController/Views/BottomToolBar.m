@@ -8,7 +8,7 @@
 
 #import "BottomToolBar.h"
 #import "SDAutoLayout.h"
-
+#import "UIImage+SD.h"
 @interface BottomToolBar ()
 
 
@@ -66,7 +66,7 @@
     [self addSubview:_numberView];
     _numberView.backgroundColor =[UIColor clearColor];
     _numberView.frame = CGRectMake(WIDTH - 80,10, 30, 30);
-    _numberView.image =[UIImage imageNamed:@"photo_number_icon"];
+    _numberView.image =[UIImage SD_imageNamed:@"photo_number_icon"];
 
     _numberLable =[UILabel new];
     [self addSubview:_numberLable];

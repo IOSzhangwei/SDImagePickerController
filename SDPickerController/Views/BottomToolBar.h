@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIView+SD.h"
 typedef void (^ToolBarBtnBlock)(UIButton * Btn);
 @interface BottomToolBar : UIView
 

@@ -9,6 +9,7 @@
 #import "PhotoAlbumView.h"
 #import "SDAssetCell.h"
 #import "UIView+SD.h"
+#import "UIImage+SD.h"
 @interface PhotoAlbumView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UIVisualEffectView *effectview;
@@ -37,7 +38,7 @@
 -(void)createUI{
     _angleImageView.frame = CGRectMake(WIDTH/2.f - 55/2.f, HEIGHT-50, 55, 29);
     _angleImageView =[UIImageView new];
-    _angleImageView.image =[UIImage imageNamed:@"Angle_"];
+    _angleImageView.image =[UIImage SD_imageNamed:@"Angle_"];
     self.alpha =0.f;
     _tableView =[[UITableView alloc]initWithFrame:self.layer.bounds style:UITableViewStylePlain];
     _tableView.delegate =self;

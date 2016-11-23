@@ -7,6 +7,7 @@
 //
 
 #import "SDAssetCell.h"
+#import "UIImage+SD.h"
 #define iOS8Later ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f)
 
 @interface SDAssetCell ()
@@ -100,7 +101,7 @@
     }
      self.imageRequestID = imageRequestID;
     self.selectBtn.selected = model.isSelected;
-    self.selectImageView.image =self.selectBtn.isSelected?[UIImage imageNamed:@"photo_sel_photoPickerVc.png"]:[UIImage imageNamed:@"photo_def_photoPickerVc.png"];
+    self.selectImageView.image =self.selectBtn.isSelected?[UIImage SD_imageNamed:@"photo_sel_photoPickerVc.png"]:[UIImage SD_imageNamed:@"photo_def_photoPickerVc.png"];
     self.type = SDAssetCellTypePhoto;
     if (model.type == SDAssetModelTypePhoto){
         self.type = SDAssetCellTypeLivePhoto;
@@ -145,7 +146,7 @@
     if (self.selectBtnBlock) {
         self.selectBtnBlock(btn.isSelected);
     }
-    self.selectImageView.image =btn.isSelected?[UIImage imageNamed:@"photo_sel_photoPickerVc.png"]:[UIImage imageNamed:@"photo_def_photoPickerVc.png"];
+    self.selectImageView.image =btn.isSelected?[UIImage SD_imageNamed:@"photo_sel_photoPickerVc.png"]:[UIImage SD_imageNamed:@"photo_def_photoPickerVc.png"];
     if (btn.isSelected) {
         [UIView showOscillatoryAnimationWithLayer:_selectImageView.layer type:SDAnimationToBigger];
     }

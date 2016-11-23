@@ -13,7 +13,7 @@
 #import "PhotoAlbumView.h"
 #import "AuthorityView.h"
 #import "SDImageManager.h"
-
+#import "UIImage+SD.h"
 @interface SDImagePickerController ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     //  BOOL _showCameraBtn;       //从这里开始研究  中间变量的意义
     NSTimer *_timer;
@@ -164,7 +164,7 @@
     if ([self hiddenCamera:indexPath]) {
         
         SDAssetCameraCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"SDAssetCameraCell" forIndexPath:indexPath];
-        cell.cameraView.image =[UIImage imageNamed:@"120-1"];
+        cell.cameraView.image =[UIImage SD_imageNamed:@"120-1"];
         return cell;
     }
     SDAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SDAssetCell" forIndexPath:indexPath];
