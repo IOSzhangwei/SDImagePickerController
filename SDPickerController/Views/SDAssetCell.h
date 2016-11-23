@@ -8,7 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import <Photos/Photos.h>
-
+#import "SDAssetModel.h"
+#import "SDImageManager.h"
+#import "UIView+SD.h"
+#import "SDAutoLayout.h"
 typedef enum : NSUInteger {
     SDAssetCellTypePhoto = 0,
     SDAssetCellTypeLivePhoto,

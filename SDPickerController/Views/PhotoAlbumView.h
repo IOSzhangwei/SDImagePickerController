@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDAssetModel.h"
 typedef void(^ReloadCollectionaViewBlock)(SDAlbumModel *model);
 @interface PhotoAlbumView : UIView
 

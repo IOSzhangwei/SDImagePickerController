@@ -7,7 +7,7 @@
 //
 
 #import "SDAssetModel.h"
-
+#import "SDImageManager.h"
 @implementation SDAssetModel
 
 + (instancetype)modelWithAsset:(id)asset type:(SDAssetModelType)type{

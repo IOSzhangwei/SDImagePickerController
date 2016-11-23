@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 #import "SDShowCell.h"
-
+#import "SDImagePickerController.h"
 
 @interface ViewController ()<SDImagePickControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 

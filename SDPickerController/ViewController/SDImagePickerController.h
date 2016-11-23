@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SDAssetModel.h"
 
 @protocol SDImagePickControllerDelegate;
 @interface SDImagePickerController : UIViewController

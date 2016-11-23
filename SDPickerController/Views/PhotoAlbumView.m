@@ -8,6 +8,7 @@
 
 #import "PhotoAlbumView.h"
 #import "SDAssetCell.h"
+#import "UIView+SD.h"
 @interface PhotoAlbumView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UIVisualEffectView *effectview;

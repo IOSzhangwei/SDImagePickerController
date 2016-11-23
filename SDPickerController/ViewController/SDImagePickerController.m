@@ -12,7 +12,7 @@
 #import "BottomToolBar.h"
 #import "PhotoAlbumView.h"
 #import "AuthorityView.h"
-
+#import "SDImageManager.h"
 
 @interface SDImagePickerController ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     //  BOOL _showCameraBtn;       //从这里开始研究  中间变量的意义

@@ -9,14 +9,14 @@
 #ifndef SDImagePicker_h
 #define SDImagePicker_h
 
-#import "SDAutoLayout.h"
-#import "SDImageManager.h"
-#import "SDAssetModel.h"
-#import "SDAssetModel.h"
-#import "UIView+SD.h"
-#import "SDImagePickerController.h"
-
-#define SD_DEBUG [SDImageManager manager].isLog
+//#import "SDAutoLayout.h"
+//#import "SDImageManager.h"
+//#import "SDAssetModel.h"
+//#import "SDAssetModel.h"
+//#import "UIView+SD.h"
+//#import "SDImagePickerController.h"
+//
+//#define SD_DEBUG [SDImageManager manager].isLog
 
 #define SDiOS7 ([UIDevice currentDevice].systemVersion.floatValue >= 7.0f)
 #define SDiOS8 ([UIDevice currentDevice].systemVersion.floatValue >= 8.0f)
