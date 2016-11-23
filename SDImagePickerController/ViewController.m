@@ -66,14 +66,15 @@
     pickerController.sortAscendingByModificationDate =NO;
     //相册选择
     pickerController.pickingImage = YES;
+    // pickerController.browserSelect =YES;      游览选择暂时未做，后续会添加上去，
+    //pickerController.pickingVideo =NO;        暂时未做，后续会添加
     [self.navigationController presentViewController:pickerNav animated:YES completion:nil];
     
     
 }
 
 
-// i.browserSelect =YES;      游览选择暂时未做，后续会添加上去，
-//i.pickingVideo =NO;        暂时未做，后续会添加
+
 
 #pragma mark ---SDImagePickControllerDelegate
 -(void)imagePickerController:(SDImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
@@ -109,12 +110,9 @@
     layout.minimumInteritemSpacing = margin;
     layout.minimumLineSpacing = margin;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 244, WIDTH, HEIGHT - 244) collectionViewLayout:layout];
-   // _collectionView.alwaysBounceVertical = YES;
-    _collectionView.backgroundColor = [UIColor redColor];
-    // _collectionView.contentInset = UIEdgeInsetsMake(4, 4, 4, 4);
+    _collectionView.backgroundColor = UIColorFromRGB(0x697787);
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
-    //  _collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     [self.view addSubview:_collectionView];
      [_collectionView registerClass:[SDShowCell class] forCellWithReuseIdentifier:@"SDShowCell"];
 }
