@@ -44,8 +44,8 @@ typedef enum : NSUInteger {
 
 + (void)showOscillatoryAnimationWithLayer:(CALayer *)layer type:(SDAnimationType)type;
 
-@property (nonatomic, assign) CGFloat ZcenterX;
-@property (nonatomic, assign) CGFloat ZcenterY;
+//@property (nonatomic, assign) CGFloat center;
+//@property (nonatomic, assign) CGFloat center;
 
-@property(nonatomic)CGFloat layerZ;
+//@property(nonatomic)CGFloat layerZ;
 @end

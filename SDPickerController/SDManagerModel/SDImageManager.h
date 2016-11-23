@@ -11,7 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <Photos/Photos.h>
 #import "SDAssetModel.h"
-
+#import "SDImagePicker.h"
 @interface SDImageManager : NSObject
 
 @property (nonatomic, strong) PHCachingImageManager *cachingImageManager;

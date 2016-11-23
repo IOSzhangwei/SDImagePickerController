@@ -99,7 +99,7 @@
         _authorityView.backgroundColor =[UIColor clearColor];
         //[self.view bringSubviewToFront:_authorityView];
         [self.view addSubview:_authorityView];
-        _authorityView.sd_layout.widthIs(WIDTH).centerXEqualToView(self.view).centerYEqualToView(self.view);
+        _authorityView.sd_layout.widthIs([UIScreen mainScreen].bounds.size.width).centerXEqualToView(self.view).centerYEqualToView(self.view);
         [_authorityView setupAutoHeightWithBottomView:_authorityView.setupBtn bottomMargin:10];
         _timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(observeAuthrizationStatusChange) userInfo:nil repeats:YES];
         
@@ -310,7 +310,7 @@
 -(void)createBottomToolBar{
     __weak typeof(self)weakSelf =self;
    // __weak typeof(_photoAlbumView)weakCell =_photoAlbumView;
-    _photoAlbumView =[[PhotoAlbumView alloc]initWithFrame:CGRectMake(WIDTH/2.f - 112, HEIGHT - 360, 250, 300)];
+    _photoAlbumView =[[PhotoAlbumView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 112, [UIScreen mainScreen].bounds.size.height - 360, 250, 300)];
     //分组点击选择事件
     _photoAlbumView.reloadCollectionaViewBlock=^(SDAlbumModel *model){
         weakSelf.albumSelected = YES;
@@ -328,7 +328,7 @@
     }];
     
     
-    _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,HEIGHT-50, WIDTH, 50)];
+    _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-50, [UIScreen mainScreen].bounds.size.width, 50)];
     _bottomToolBarView.numberLable.hidden =_selectedModels.count<=0;
     _bottomToolBarView.numberView.hidden=_selectedModels.count<=0;
     _bottomToolBarView.numberLable.text =[NSString stringWithFormat:@"%zd",_selectedModels.count];

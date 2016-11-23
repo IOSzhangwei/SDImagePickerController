@@ -28,7 +28,9 @@
         
         _layerFrame = frame;
         self.backgroundColor =[UIColor clearColor];
-        self.layerZ = 25.f;
+        
+        self.layer.cornerRadius=25.f;
+        self.layer.masksToBounds=YES;
         [self createUI];
     }
     return self;
@@ -36,7 +38,7 @@
 
 
 -(void)createUI{
-    _angleImageView.frame = CGRectMake(WIDTH/2.f - 55/2.f, HEIGHT-50, 55, 29);
+    _angleImageView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 55/2.f, [UIScreen mainScreen].bounds.size.height-50, 55, 29);
     _angleImageView =[UIImageView new];
     _angleImageView.image =[UIImage SD_imageNamed:@"Angle_"];
     self.alpha =0.f;
@@ -80,7 +82,7 @@
 -(void)setAlbumData:(NSMutableArray *)albumData{
     _albumData =albumData;
     //此处修改frame
-    _layerFrame = CGRectMake(WIDTH/2.f - 250/2.f, HEIGHT -68 -45*_albumData.count, 250, 45*_albumData.count);
+    _layerFrame = CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 250/2.f, [UIScreen mainScreen].bounds.size.height -68 -45*_albumData.count, 250, 45*_albumData.count);
     _tableView.height = 45*_albumData.count;
 }
 
@@ -88,7 +90,7 @@
     NSLog(@"显示显示");
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     _effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
-    _effectview.frame = CGRectMake(0, 0, WIDTH, HEIGHT-50);
+    _effectview.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-50);
     [view insertSubview:_effectview atIndex:0];
     [view bringSubviewToFront:_effectview];
     [view bringSubviewToFront:self];
@@ -97,7 +99,7 @@
     [self.layer setValue:@(0.1) forKeyPath:@"transform.scale"];
     [view addSubview:self];
     [view addSubview:_angleImageView];
-    self.layer.frame= CGRectMake(WIDTH/2.f - 250/2.f, HEIGHT -68 -45*_albumData.count+70, 250, 45*_albumData.count);
+    self.layer.frame= CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 250/2.f, [UIScreen mainScreen].bounds.size.height -68 -45*_albumData.count+70, 250, 45*_albumData.count);
     [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         _effectview.alpha =1;
         self.alpha =1.f;
@@ -105,7 +107,7 @@
         self.layer.anchorPoint=CGPointMake(0.5, 0.9);
         [self.layer setValue:@(1.08) forKeyPath:@"transform.scale"];
     #pragma mark ---设置弹出View frame
-        _angleImageView.frame = CGRectMake(WIDTH/2.f - 55/2.f, HEIGHT -68, 55, 29);
+        _angleImageView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 55/2.f, [UIScreen mainScreen].bounds.size.height -68, 55, 29);
         self.layer.frame=_layerFrame;
         _angleImageView.alpha =1.f;
 
@@ -122,8 +124,8 @@
 -(void)dismiss{
     NSLog(@"dismissssss");
     _angleImageView.alpha =0;
-    self.layer.frame= CGRectMake(WIDTH/2.f - 250/2.f, HEIGHT -68 -45*_albumData.count+70, 250, 45*_albumData.count);
-    _angleImageView.frame = CGRectMake(WIDTH/2.f - 55/2.f, HEIGHT-30, 55, 29);
+    self.layer.frame= CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 250/2.f, [UIScreen mainScreen].bounds.size.height -68 -45*_albumData.count+70, 250, 45*_albumData.count);
+    _angleImageView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 55/2.f, [UIScreen mainScreen].bounds.size.height-30, 55, 29);
     self.alpha =0.f;
     [UIView animateWithDuration:0.5*0.618 animations:^{
         

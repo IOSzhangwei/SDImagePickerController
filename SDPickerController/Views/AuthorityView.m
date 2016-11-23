@@ -26,7 +26,7 @@
     _titleLabel.text =@"请先去设置中打开相册访问权限";
     _titleLabel.backgroundColor =[UIColor clearColor];
     _titleLabel.sd_layout.topSpaceToView(self,5).heightIs(25).centerXEqualToView(self).autoHeightRatio(0);
-    [_titleLabel setSingleLineAutoResizeWithMaxWidth:WIDTH];
+    [_titleLabel setSingleLineAutoResizeWithMaxWidth:[UIScreen mainScreen].bounds.size.width];
  
     
     _setupBtn=[UIButton buttonWithType:UIButtonTypeSystem];

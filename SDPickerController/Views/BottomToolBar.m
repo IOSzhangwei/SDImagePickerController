@@ -65,7 +65,7 @@
     _numberView =[UIImageView new];
     [self addSubview:_numberView];
     _numberView.backgroundColor =[UIColor clearColor];
-    _numberView.frame = CGRectMake(WIDTH - 80,10, 30, 30);
+    _numberView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 80,10, 30, 30);
     _numberView.image =[UIImage SD_imageNamed:@"photo_number_icon"];
 
     _numberLable =[UILabel new];

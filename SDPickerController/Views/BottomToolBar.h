@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIView+SD.h"
+#import "SDImagePicker.h"
 typedef void (^ToolBarBtnBlock)(UIButton * Btn);
 @interface BottomToolBar : UIView
 

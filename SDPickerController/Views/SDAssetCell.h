@@ -12,6 +12,7 @@
 #import "SDImageManager.h"
 #import "UIView+SD.h"
 #import "SDAutoLayout.h"
+#import "SDImagePicker.h"
 typedef enum : NSUInteger {
     SDAssetCellTypePhoto = 0,
     SDAssetCellTypeLivePhoto,

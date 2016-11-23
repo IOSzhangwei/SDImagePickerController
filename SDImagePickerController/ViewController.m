@@ -30,7 +30,7 @@
     UIButton *addBtn =[[UIButton alloc]init];
     addBtn.backgroundColor =[UIColor redColor];
     [addBtn setTitle:@"添加" forState:UIControlStateNormal];
-    addBtn.frame = CGRectMake((WIDTH -120 -30)/2.f, 90, 60, 60);
+    addBtn.frame = CGRectMake(([UIScreen mainScreen].bounds.size.width -120 -30)/2.f, 90, 60, 60);
     [addBtn addTarget:self action:@selector(click:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:addBtn];
     
@@ -105,11 +105,11 @@
 -(void)createUI{
     UICollectionViewFlowLayout *layout =[[UICollectionViewFlowLayout alloc]init];
     CGFloat margin =2;
-    CGFloat itemWH = (WIDTH - 2 * margin) / 3 ;
+    CGFloat itemWH = ([UIScreen mainScreen].bounds.size.width - 2 * margin) / 3 ;
     layout.itemSize = CGSizeMake(itemWH, itemWH);
     layout.minimumInteritemSpacing = margin;
     layout.minimumLineSpacing = margin;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 244, WIDTH, HEIGHT - 244) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 244, [UIScreen mainScreen].bounds.size.width, HEIGHT - 244) collectionViewLayout:layout];
     _collectionView.backgroundColor = UIColorFromRGB(0x697787);
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
