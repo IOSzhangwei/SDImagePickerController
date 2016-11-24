@@ -405,6 +405,8 @@
             _model= model;
             self.modelWithDataS =[NSMutableArray arrayWithArray:_model.models];
             [self checkSelectedModels];   //获取数据源之后，检查有没上次选中的图片
+            _collectionView.hidden =NO;
+            _authorityView.hidden = YES;
             [_collectionView reloadData];
         }];
         [self.view bringSubviewToFront:_collectionView];
