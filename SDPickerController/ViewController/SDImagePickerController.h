@@ -70,7 +70,9 @@
 @property (nonatomic, strong) NSMutableArray<SDAssetModel *> *selectedModels;
 
 @property (nonatomic, weak) id<SDImagePickControllerDelegate> pickerDelegate;
-
+/**
+   maxImagesCount 为1时，自动进入单选模式（无选中与非选中UI图）
+ */
 - (instancetype)initWithMaxImagesCount:(NSInteger)maxImagesCount columnNumber:(NSInteger)columnNumber delegate:(id<SDImagePickControllerDelegate>)delegate;
 
 @end

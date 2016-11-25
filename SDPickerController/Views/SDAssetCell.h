@@ -34,7 +34,15 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, assign) NSInteger maxImagesCount;
 
+/**
+  是否游览选择
+ */
 @property(nonatomic)BOOL photoBrowseSelect;
+
+/**
+  单选模式
+ */
+@property(nonatomic,assign)BOOL oneSelect;
 
 @end
 

@@ -19,6 +19,8 @@ typedef void (^ToolBarBtnBlock)(UIButton * Btn);
 @property(nonatomic,strong)UILabel *numberLable;
 @property(nonatomic,strong)UIImageView *numberView;
 @property(nonatomic,strong)UIButton *photoAlbumBtn;
+
+@property(nonatomic,assign)BOOL oneSelect;
 /**
    刷新ToolBar 状态
  */

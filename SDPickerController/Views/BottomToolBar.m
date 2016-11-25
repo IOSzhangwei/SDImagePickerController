@@ -72,11 +72,27 @@
     [self addSubview:_numberLable];
     _numberLable.frame =_numberView.frame;
     _numberLable.backgroundColor =[UIColor clearColor];
-    _numberLable.text = @"1";
+    //_numberLable.text = @"1";
     _numberLable.textColor =[UIColor whiteColor];
     _numberLable.backgroundColor =[UIColor clearColor];
     _numberLable.textAlignment = NSTextAlignmentCenter;
     _numberLable.font =[UIFont systemFontOfSize:15];
+    
+    
+    
+}
+
+-(void)setOneSelect:(BOOL)oneSelect{
+    _oneSelect=oneSelect;
+    if (_oneSelect) {
+        _doneBtn.hidden = YES;
+        _numberView.hidden =YES;
+        _numberLable.hidden = YES;
+    }else{
+        _doneBtn.hidden = NO;
+        _numberView.hidden =NO;
+        _numberLable.hidden = NO;
+    }
 }
 
 -(void)doneClick:(UIButton *)btn{
@@ -99,6 +115,9 @@
 
 -(void)refreshToolBarStatus:(NSInteger)selectedCount{
     
+    if (_oneSelect) {
+        return;
+    }
     _doneBtn.enabled = selectedCount>0;
     _numberView.hidden=selectedCount<=0;
     _numberLable.hidden =selectedCount<=0;

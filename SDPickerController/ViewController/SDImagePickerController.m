@@ -88,7 +88,6 @@
     [self createCollectionView];
     [self createBottomToolBar];
 
-    
     if (![[SDImageManager manager] authorizationStatusAuthorized]) {
         
         _collectionView.hidden =YES;
@@ -113,6 +112,7 @@
 }
 
 - (void)checkSelectedModels {
+ 
     for (SDAssetModel *model in _modelWithDataS) {
         model.isSelected = NO;
         NSMutableArray *selectedAssets = [NSMutableArray array];
@@ -147,11 +147,17 @@
     return self.modelWithDataS.count;
 }
 
+
+
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     if ([self hiddenCamera:indexPath] &&[self.pickerDelegate respondsToSelector:@selector(imagePickerController:seletedCamera:)]) {
         [self.pickerDelegate imagePickerController:self seletedCamera:nil];
         return;
     }
+    if (_maxImagesCount==1) {  //单选模式，
+        [self oneSelect:indexPath];
+    }
+    
     NSLog(@"点击进入游览页面===%@",self.navigationController);
 }
 
@@ -172,6 +178,10 @@
         model =_modelWithDataS[indexPath.row];    //隐藏相机
     }else{
         model =_modelWithDataS[indexPath.row-1];  //显示相机
+    }
+    
+    if (_maxImagesCount ==1) {
+        cell.oneSelect = YES;
     }
     
     cell.model = model;
@@ -306,7 +316,6 @@
 #pragma mark ---initView---
 -(void)createBottomToolBar{
     __weak typeof(self)weakSelf =self;
-   // __weak typeof(_photoAlbumView)weakCell =_photoAlbumView;
     _photoAlbumView =[[PhotoAlbumView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 112, [UIScreen mainScreen].bounds.size.height - 360, 250, 300)];
     //分组点击选择事件
     _photoAlbumView.reloadCollectionaViewBlock=^(SDAlbumModel *model){
@@ -326,8 +335,13 @@
     
     
     _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-50, [UIScreen mainScreen].bounds.size.width, 50)];
-    _bottomToolBarView.numberLable.hidden =_selectedModels.count<=0;
-    _bottomToolBarView.numberView.hidden=_selectedModels.count<=0;
+    if (_maxImagesCount ==1) {
+        _bottomToolBarView.oneSelect = YES;
+    }else{
+        _bottomToolBarView.numberLable.hidden =_selectedModels.count<=0;
+        _bottomToolBarView.numberView.hidden=_selectedModels.count<=0;
+    }
+    
     _bottomToolBarView.numberLable.text =[NSString stringWithFormat:@"%zd",_selectedModels.count];
     _bottomToolBarView.toolBarBtnBlock = ^(UIButton * btn){
         switch (btn.tag-200) {
@@ -409,6 +423,23 @@
         [self.view bringSubviewToFront:_collectionView];
     }
     
+}
+
+//单选模式点击事件
+-(void)oneSelect:(NSIndexPath *)indexPath{
+    SDAssetModel *model;
+    if (!_cameraBtn||self.sortAscendingByModificationDate) {
+        model =_modelWithDataS[indexPath.row];    //隐藏相机
+    }else{
+        model =_modelWithDataS[indexPath.row-1];  //显示相机
+    }
+    
+    [[SDImageManager manager] getPhotoWithAsset:model.asset completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
+        NSArray *array =@[photo];
+        NSArray *assetArray =@[model.asset];
+        NSArray *infoArray =@[info];
+        [self didGetAllPhotos:array assets:assetArray infoArr:infoArray];
+    }];
 }
 
 @end

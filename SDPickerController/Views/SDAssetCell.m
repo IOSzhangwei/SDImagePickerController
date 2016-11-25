@@ -73,6 +73,8 @@
         _selectBtn.frame= self.bounds;
     }
     
+    
+    
     if (iOS8Later) {
         self.representedAssetIdentifier =[[SDImageManager manager] getAssetIdentifier:model.asset];
     }
@@ -115,6 +117,14 @@
         if (_selectImageView.hidden == NO) {
             _selectImageView.hidden = YES;
         }
+    }
+    
+    if (_oneSelect) {
+        _selectImageView.hidden = YES;
+        _selectBtn.hidden = YES;
+    }else{
+        _selectImageView.hidden = NO;
+        _selectBtn.hidden = NO;
     }
     
 }
