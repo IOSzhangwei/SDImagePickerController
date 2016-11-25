@@ -82,5 +82,21 @@
 - (BOOL)isPhotoSelectableWithAsset:(id)asset;
 
 
+#pragma mark ========相册创建========
+/**
+ 创建一个相册，存在的话不会创建
 
+ @param albumName  创建的相册名字
+ @param completion success为YES 创建成功
+ */
+-(void)createAssetAlbumForName:( NSString *)albumName completion:( void(^)(BOOL success, NSError * error))completion;
+
+/**
+ 
+ 保存image 到指定相册中。。如果没有该相册，自动创建并保存
+
+ @param image     image
+ @param albumName albumName
+ */
+-(void)saveImage:(UIImage *)image AlbumForName:(NSString *)albumName;
 @end

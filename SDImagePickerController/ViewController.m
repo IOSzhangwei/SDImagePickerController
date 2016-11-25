@@ -9,7 +9,7 @@
 #import "ViewController.h"
 #import "SDShowCell.h"
 #import "SDImagePickerController.h"
-
+#import "UIImage+SD.h"
 @interface ViewController ()<SDImagePickControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 
 
@@ -45,6 +45,8 @@
 }
 
 -(void)deleteBtnClick:(UIButton *)sender{
+    
+    
     [_isSelectedPhotoArray removeAllObjects];
     [_photosArray removeAllObjects];
     [_collectionView reloadData];

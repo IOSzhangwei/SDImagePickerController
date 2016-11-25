@@ -556,6 +556,78 @@ static CGFloat SDScreenScale;
     AssetGridThumbnailSize = CGSizeMake(itemWH * SDScreenScale, itemWH * SDScreenScale);
 }
 
+#pragma mark ========相册创建========
+-(void)createAssetAlbumForName:( NSString *)albumName completion:( void(^)(BOOL success, NSError * error))completion{
+    
+    if ([self checkAlbum:albumName]) {
+        if (completion) {
+            NSError *error = [NSError errorWithDomain:@"https://github.com/IOSzhangwei/SDImagePickerController" code:-101 userInfo:@{@"error":@"相册已经存在"}];
+            completion(NO,error);
+        }
+    }else{
+        [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+           [PHAssetCollectionChangeRequest creationRequestForAssetCollectionWithTitle:albumName];
+        } completionHandler:^(BOOL success, NSError * _Nullable error) {
+            if (completion) {
+                completion(success,error);
+            }
+        }];
+    }
+}
+
+-(void)saveImage:(UIImage *)image AlbumForName:(NSString *)albumName{
+    
+    [self createAssetAlbumForName:albumName completion:nil];
+    
+    PHAssetCollection *collection =[self findAlbumName:albumName];
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{
+        
+        PHAssetChangeRequest *createAsset= [PHAssetChangeRequest creationRequestForAssetFromImage:image];
+        // Request editing the album.
+        PHAssetCollectionChangeRequest *albumChangeRequest = [PHAssetCollectionChangeRequest changeRequestForAssetCollection:collection];
+        // Get a placeholder for the new asset and add it to the album editing request.
+        PHObjectPlaceholder *assetPlaceholder = [createAsset placeholderForCreatedAsset];
+        [albumChangeRequest addAssets:@[ assetPlaceholder ]];
+        
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        if (success) {
+            NSLog(@"保存成功");
+        }else{
+            NSLog(@"保存失败");
+        }
+    }];
+}
+
+
+/**
+  根据相册名，查找到对应的 PHAssetCollection
+ */
+-(PHAssetCollection *)findAlbumName:(NSString *)albumName{
+    PHFetchResult *result =[PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+    PHAssetCollection *collection = nil;
+    for (PHAssetCollection *collectionList in result) {
+        if ([[collectionList valueForKey:@"title"] isEqualToString:albumName]) {
+            collection =collectionList;
+            return collection;
+        }
+    }
+    return nil;
+}
+
+/**
+   检查相册是否存在。存在返回YES ，不存在返回NO
+ */
+-(BOOL)checkAlbum:(NSString *)album{
+    
+    PHFetchResult *result =[PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
+    
+    for (PHCollection *collectionList in result) {
+        if ([[collectionList valueForKey:@"title"] isEqualToString:album]) {
+            return YES;
+        }
+    }
+    return NO;
+}
 
 
 @end
