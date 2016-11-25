@@ -40,6 +40,16 @@
 @property (nonatomic, assign) NSInteger minPhotoWidthSelectable;
 @property (nonatomic, assign) NSInteger minPhotoHeightSelectable;
 @property (nonatomic, assign) BOOL hideWhenCanNotSelect;
+
+/**
+   图片选择
+ */
+@property(nonatomic,assign)BOOL pickingImage;
+/**
+   视频选择
+ */
+@property(nonatomic,assign)BOOL pickingVideo;
+
 /**
     返回YES如果得到了授权
  */

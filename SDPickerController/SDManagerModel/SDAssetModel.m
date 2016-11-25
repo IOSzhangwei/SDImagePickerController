@@ -30,8 +30,8 @@
 
 -(void)setResult:(id)result{
     _result =result;
-    BOOL pickingImage = [[[NSUserDefaults standardUserDefaults] objectForKey:@"SD_PickingImage"] isEqualToString:@"1"];
-    BOOL pickingVideo = [[[NSUserDefaults standardUserDefaults] objectForKey:@"SD_PickingVideo"] isEqualToString:@"1"];
+    BOOL pickingImage = [SDImageManager manager].pickingImage;
+    BOOL pickingVideo = [SDImageManager manager].pickingVideo;
     [[SDImageManager manager] getAssetsFromFetchResult:result allowPickingVideo:pickingVideo allowPickingImage:pickingImage completion:^(NSArray<SDAssetModel *> *models) {
     
         _models = models;

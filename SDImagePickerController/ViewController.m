@@ -69,7 +69,7 @@
     //相册选择
     pickerController.pickingImage = YES;
     // pickerController.browserSelect =YES;      游览选择暂时未做，后续会添加上去，
-    //pickerController.pickingVideo =NO;        暂时未做，后续会添加
+  //  pickerController.pickingVideo =NO;        //暂时未做，后续会添加
     [self.navigationController presentViewController:pickerNav animated:YES completion:nil];
     
     

@@ -71,16 +71,13 @@
 
 -(void)setPickingImage:(BOOL)pickingImage{
     _pickingImage = pickingImage;
-    NSString *image=_pickingImage?@"1":@"0";
-    [SDUserDefault setObject:image forKey:@"SD_PickingImage"];
-    [SDUserDefault synchronize];
+    [SDImageManager manager].pickingImage = pickingImage;
+
 }
 
 -(void)setPickingVideo:(BOOL)pickingVideo{
     _pickingVideo = pickingVideo;
-    NSString *video=_pickingVideo?@"1":@"0";
-    [SDUserDefault setObject:video forKey:@"SD_PickingVideo"];
-    [SDUserDefault synchronize];
+    [SDImageManager manager].pickingVideo = pickingVideo;
 }
 
 - (void)viewDidLoad {
