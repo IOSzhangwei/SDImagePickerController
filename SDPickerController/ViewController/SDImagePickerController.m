@@ -355,10 +355,12 @@
     
     
     
-    CGFloat ToolBarViewH;
+    CGFloat ToolBarViewH =0;
     if (_pickerVCType ==SDPickerVCNav) {
         ToolBarViewH =44;
     }else if(_pickerVCType ==SDPickerVCToolBar){
+        ToolBarViewH =50;
+    }else{
         ToolBarViewH =50;
     }
     _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-50, [UIScreen mainScreen].bounds.size.width, ToolBarViewH)];

@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SDPickerController"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "A Very beautiful of SDPickerController."
   s.description  = "this is very good SDPickerControlle,Used in photo album, thin, and some optimization "
   s.homepage     = "http://www.jianshu.com/users/3efefee71c8c/latest_articles"
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
  
   s.author             = { "zhangwei111" => "18580228790@163.com" }
    s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/IOSzhangwei/SDImagePickerController.git", :tag => "1.0.3" }
+  s.source       = { :git => "https://github.com/IOSzhangwei/SDImagePickerController.git", :tag => "1.0.4" }
   s.source_files  = "SDPickerController/**/*"
   s.resource      = "SDPickerController/Resources/Mytools.bundle"
   s.exclude_files = "Classes/Exclude"
