@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "SDPickerController"
-  s.version      = "1.0.4"
+  s.version      = "1.0.5"
   s.summary      = "A Very beautiful of SDPickerController."
   s.description  = "this is very good SDPickerControlle,Used in photo album, thin, and some optimization "
   s.homepage     = "http://www.jianshu.com/users/3efefee71c8c/latest_articles"

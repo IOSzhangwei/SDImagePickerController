@@ -348,17 +348,17 @@
     
     __weak typeof(self)weakSelf =self;
    
-    ToolBarViewH = 50;
+    //ToolBarViewH = 50;
     if (_pickerVCType==SDPickerVCNav) {
         [self PickerVCNav];
-        ToolBarViewH =44;
+        //ToolBarViewH =44;
     }else if (_pickerVCType ==SDPickerVCToolBar){
         [self pickerVCToolBar];
     }
 
     
     
-    _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-50, [UIScreen mainScreen].bounds.size.width, ToolBarViewH)];
+    _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-50, [UIScreen mainScreen].bounds.size.width, 50)];
    
     if (_maxImagesCount ==1) {
         _bottomToolBarView.oneSelect = YES;
