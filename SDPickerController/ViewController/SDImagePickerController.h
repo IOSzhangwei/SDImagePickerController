@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SDAssetModel.h"
-
+#import "SDPickerVCType.h"
 @protocol SDImagePickControllerDelegate;
 @interface SDImagePickerController : UIViewController
 
@@ -64,6 +64,11 @@
   用户选中过的图片数组
  */
 @property (nonatomic, strong) NSMutableArray *selectedAssets;
+
+/**
+  选择页的UI样式：toolbar 和Nav
+ */
+@property(nonatomic,assign)SDPickerVCUI pickerVCType;
 /**
   当前选中的图片数组
  */

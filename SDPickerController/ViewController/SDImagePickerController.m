@@ -14,6 +14,8 @@
 #import "AuthorityView.h"
 #import "SDImageManager.h"
 #import "UIImage+SD.h"
+#import "NavigationAlbumView.h"
+#import "SDImagePicker.h"
 @interface SDImagePickerController ()<UICollectionViewDelegate,UICollectionViewDataSource>{
     //  BOOL _showCameraBtn;       //从这里开始研究  中间变量的意义
     NSTimer *_timer;
@@ -26,6 +28,8 @@
 @property(nonatomic,strong)BottomToolBar *bottomToolBarView;
 
 @property(nonatomic,strong)PhotoAlbumView *photoAlbumView;
+
+@property(nonatomic,strong)NavigationAlbumView *navigationAlbumView;
 
 @property(nonatomic,assign)BOOL collectionViewBottom; //collectionView 是否定位到底部()
 
@@ -54,6 +58,8 @@
         _cameraBtn = YES;
         self.pickerDelegate=delegate;
         _selectedModels =[NSMutableArray array];
+        _pickerVCType = _pickerVCType ==SDPickerVCNav?SDPickerVCNav:SDPickerVCToolBar;
+        
     }
     return self;
 }
@@ -85,8 +91,16 @@
     _collectionViewBottom = YES;
     self.view.backgroundColor =[UIColor whiteColor];
     
+    
+    
     [self createCollectionView];
     [self createBottomToolBar];
+    if (_pickerVCType == SDPickerVCNav) {
+        _collectionView.frame = CGRectMake(0, 44, WIDTH, HEIGHT-44);
+        _bottomToolBarView.y = 0;
+        _bottomToolBarView.backgroundColor =UIColorFromRGB(0x353338);
+        
+    }
 
     if (![[SDImageManager manager] authorizationStatusAuthorized]) {
         
@@ -269,10 +283,25 @@
     }
     
     if (btn.isSelected) {
-        [_photoAlbumView dismiss];
+        if (_pickerVCType ==SDPickerVCNav) {
+            
+            NSLog(@"SDPickerVCNav 模式下隐藏");
+            [_navigationAlbumView dismiss];
+            
+        }else if (_pickerVCType ==SDPickerVCToolBar){
+             [_photoAlbumView dismiss];
+        }
         btn.selected = NO;
     }else{
-        [_photoAlbumView showPhotoAlbum:self.view];
+        if (_pickerVCType ==SDPickerVCNav) {
+            
+           [_navigationAlbumView showPhotoAlbum];
+            
+            NSLog(@"SDPickerVCNav 模式下显示");
+            
+        }else if (_pickerVCType ==SDPickerVCToolBar){
+            [_photoAlbumView showPhotoAlbum:self.view];
+        }
         btn.selected = YES;
     }
 }
@@ -315,26 +344,25 @@
 
 #pragma mark ---initView---
 -(void)createBottomToolBar{
+    
     __weak typeof(self)weakSelf =self;
-    _photoAlbumView =[[PhotoAlbumView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 112, [UIScreen mainScreen].bounds.size.height - 360, 250, 300)];
-    //分组点击选择事件
-    _photoAlbumView.reloadCollectionaViewBlock=^(SDAlbumModel *model){
-        weakSelf.albumSelected = YES;
-        _modelWithDataS = [NSMutableArray arrayWithArray:model.models];
-        [weakSelf.bottomToolBarView.photoAlbumBtn setTitle:model.name forState:UIControlStateNormal];
-        [weakSelf checkSelectedModels];
-        [weakSelf.collectionView reloadData];
-        [weakSelf scrollCollectionViewToBottom];
-    };
+    if (_pickerVCType==SDPickerVCNav) {
+        [self PickerVCNav];
+    }else if (_pickerVCType ==SDPickerVCToolBar){
+        [self pickerVCToolBar];
+    }
     
     
     
-    [[SDImageManager manager] getAllAlbums:NO PickingImage:YES completion:^(NSArray<SDAlbumModel *> *models) {
-        _photoAlbumView.albumData =[NSMutableArray arrayWithArray:models];
-    }];
     
-    
-    _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-50, [UIScreen mainScreen].bounds.size.width, 50)];
+    CGFloat ToolBarViewH;
+    if (_pickerVCType ==SDPickerVCNav) {
+        ToolBarViewH =44;
+    }else if(_pickerVCType ==SDPickerVCToolBar){
+        ToolBarViewH =50;
+    }
+    _bottomToolBarView =[[BottomToolBar alloc]initWithFrame:CGRectMake(0,[UIScreen mainScreen].bounds.size.height-50, [UIScreen mainScreen].bounds.size.width, ToolBarViewH)];
+   
     if (_maxImagesCount ==1) {
         _bottomToolBarView.oneSelect = YES;
     }else{
@@ -364,7 +392,40 @@
     
 }
 
+-(void)PickerVCNav{
+    __weak typeof(self)weakSelf =self;
+    _navigationAlbumView =[[NavigationAlbumView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, 0)];
+    _navigationAlbumView.navCollectionaViewBlock =^(SDAlbumModel *model){
+        weakSelf.albumSelected = YES;
+        _modelWithDataS = [NSMutableArray arrayWithArray:model.models];
+        [weakSelf.bottomToolBarView.photoAlbumBtn setTitle:model.name forState:UIControlStateNormal];
+        [weakSelf checkSelectedModels];
+        [weakSelf.collectionView reloadData];
+        [weakSelf scrollCollectionViewToBottom];
+    };
+    [self.view addSubview:_navigationAlbumView];
+    [[SDImageManager manager] getAllAlbums:NO PickingImage:YES completion:^(NSArray<SDAlbumModel *> *models) {
+        _navigationAlbumView.albumData =[NSMutableArray arrayWithArray:models];
+    }];
+    
+}
 
+-(void)pickerVCToolBar{
+    __weak typeof(self)weakSelf =self;
+    _photoAlbumView =[[PhotoAlbumView alloc]initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 112, HEIGHT - 360, 250, 300)];
+    //分组点击选择事件
+    _photoAlbumView.reloadCollectionaViewBlock=^(SDAlbumModel *model){
+        weakSelf.albumSelected = YES;
+        _modelWithDataS = [NSMutableArray arrayWithArray:model.models];
+        [weakSelf.bottomToolBarView.photoAlbumBtn setTitle:model.name forState:UIControlStateNormal];
+        [weakSelf checkSelectedModels];
+        [weakSelf.collectionView reloadData];
+        [weakSelf scrollCollectionViewToBottom];
+    };
+    [[SDImageManager manager] getAllAlbums:NO PickingImage:YES completion:^(NSArray<SDAlbumModel *> *models) {
+        _photoAlbumView.albumData =[NSMutableArray arrayWithArray:models];
+    }];
+}
 
 -(void)createCollectionView{
     

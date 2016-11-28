@@ -21,6 +21,8 @@
 		04358CA41DE3254D00F5DD53 /* UIView+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CA31DE3254D00F5DD53 /* UIView+SD.m */; };
 		04358CA71DE3287200F5DD53 /* SDAssetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CA61DE3287200F5DD53 /* SDAssetModel.m */; };
 		04358CAB1DE32DEA00F5DD53 /* SDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 04358CAA1DE32DEA00F5DD53 /* SDImageManager.m */; };
+		727BB6E71DEC08D80069C8D8 /* NavigationAlbumView.m in Sources */ = {isa = PBXBuildFile; fileRef = 727BB6E61DEC08D80069C8D8 /* NavigationAlbumView.m */; };
+		727BB6EA1DEC25AE0069C8D8 /* NavAlbumCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 727BB6E91DEC25AE0069C8D8 /* NavAlbumCell.m */; };
 		72F8BE3E1DE5A2F9002F0C54 /* AuthorityView.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */; };
 		72F8BE7D1DE5AFDC002F0C54 /* UIImage+SD.m in Sources */ = {isa = PBXBuildFile; fileRef = 72F8BE7C1DE5AFDC002F0C54 /* UIImage+SD.m */; };
 		72F8BED91DE6AC2E002F0C54 /* Mytools.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 72F8BEC71DE6AC2E002F0C54 /* Mytools.bundle */; };
@@ -80,6 +82,11 @@
 		04358CA81DE328FC00F5DD53 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		04358CA91DE32DEA00F5DD53 /* SDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDImageManager.h; sourceTree = "<group>"; };
 		04358CAA1DE32DEA00F5DD53 /* SDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDImageManager.m; sourceTree = "<group>"; };
+		727BB6E41DEBC9F90069C8D8 /* SDPickerVCType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDPickerVCType.h; sourceTree = "<group>"; };
+		727BB6E51DEC08D80069C8D8 /* NavigationAlbumView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationAlbumView.h; sourceTree = "<group>"; };
+		727BB6E61DEC08D80069C8D8 /* NavigationAlbumView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationAlbumView.m; sourceTree = "<group>"; };
+		727BB6E81DEC25AE0069C8D8 /* NavAlbumCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavAlbumCell.h; sourceTree = "<group>"; };
+		727BB6E91DEC25AE0069C8D8 /* NavAlbumCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavAlbumCell.m; sourceTree = "<group>"; };
 		72F8BE3C1DE5A2F9002F0C54 /* AuthorityView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthorityView.h; sourceTree = "<group>"; };
 		72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthorityView.m; sourceTree = "<group>"; };
 		72F8BE7B1DE5AFDC002F0C54 /* UIImage+SD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+SD.h"; sourceTree = "<group>"; };
@@ -245,6 +252,11 @@
 				72FCCAB31DE41EED00FDC056 /* PhotoAlbumView.m */,
 				72F8BE3C1DE5A2F9002F0C54 /* AuthorityView.h */,
 				72F8BE3D1DE5A2F9002F0C54 /* AuthorityView.m */,
+				727BB6E41DEBC9F90069C8D8 /* SDPickerVCType.h */,
+				727BB6E51DEC08D80069C8D8 /* NavigationAlbumView.h */,
+				727BB6E61DEC08D80069C8D8 /* NavigationAlbumView.m */,
+				727BB6E81DEC25AE0069C8D8 /* NavAlbumCell.h */,
+				727BB6E91DEC25AE0069C8D8 /* NavAlbumCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -416,6 +428,7 @@
 				04358C5F1DE3228B00F5DD53 /* ViewController.m in Sources */,
 				04358CAB1DE32DEA00F5DD53 /* SDImageManager.m in Sources */,
 				04358CA71DE3287200F5DD53 /* SDAssetModel.m in Sources */,
+				727BB6EA1DEC25AE0069C8D8 /* NavAlbumCell.m in Sources */,
 				04358CA41DE3254D00F5DD53 /* UIView+SD.m in Sources */,
 				04358C5C1DE3228B00F5DD53 /* AppDelegate.m in Sources */,
 				72FCCADE1DE4521E00FDC056 /* SDShowCell.m in Sources */,
@@ -426,6 +439,7 @@
 				72F8BE7D1DE5AFDC002F0C54 /* UIImage+SD.m in Sources */,
 				72FCCAB81DE41F6200FDC056 /* SDImagePickerController.m in Sources */,
 				04358C591DE3228B00F5DD53 /* main.m in Sources */,
+				727BB6E71DEC08D80069C8D8 /* NavigationAlbumView.m in Sources */,
 				04358C9D1DE324CE00F5DD53 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				72FCCAAF1DE41B3200FDC056 /* SDAssetCell.m in Sources */,
 				72F8BE3E1DE5A2F9002F0C54 /* AuthorityView.m in Sources */,

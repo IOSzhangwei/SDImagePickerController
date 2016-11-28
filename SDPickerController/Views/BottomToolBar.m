@@ -28,12 +28,14 @@
 -(void)createUI{
     
     UIButton *backBtn =[UIButton buttonWithType:UIButtonTypeCustom];
+    
     backBtn.tag = 200;
     backBtn.backgroundColor =[UIColor clearColor];
     backBtn.titleLabel.font =[UIFont systemFontOfSize:18];
     backBtn.frame = CGRectMake(0, 0, 70, self.height);
     [backBtn setTitle:@"返回" forState:UIControlStateNormal];
-    backBtn.titleLabel.font =[UIFont systemFontOfSize:16];
+    backBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    backBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
     [backBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backBtn:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:backBtn];
@@ -54,11 +56,12 @@
     _doneBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     _doneBtn.tag = 202;
     _doneBtn.backgroundColor =[UIColor clearColor];
+    _doneBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+    _doneBtn.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 10);
+    _doneBtn.frame = CGRectMake(WIDTH - 70, 0, 70, self.height);
     [self addSubview:_doneBtn];
     _doneBtn.titleLabel.font =[UIFont systemFontOfSize:18];
     [_doneBtn setTitle:@"完成" forState:UIControlStateNormal];
-    _doneBtn.sd_layout.rightSpaceToView(self,0);
-    [_doneBtn setupAutoSizeWithHorizontalPadding:5 buttonHeight:self.height];
     [_doneBtn addTarget:self action:@selector(doneClick:) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -66,6 +69,7 @@
     [self addSubview:_numberView];
     _numberView.backgroundColor =[UIColor clearColor];
     _numberView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 80,10, 30, 30);
+    _numberView.centerY = _doneBtn.centerY;
     _numberView.image =[UIImage SD_imageNamed:@"photo_number_icon"];
 
     _numberLable =[UILabel new];

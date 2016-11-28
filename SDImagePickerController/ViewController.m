@@ -54,8 +54,8 @@
 
 -(void)click:(UIButton *)sender{
     
-    SDImagePickerController *pickerController=[[SDImagePickerController alloc]initWithMaxImagesCount:6 columnNumber:3 delegate:self];
-    UINavigationController *pickerNav =[[UINavigationController alloc]initWithRootViewController:pickerController];
+    SDImagePickerController *pickerController=[[SDImagePickerController alloc]initWithMaxImagesCount:9 columnNumber:4 delegate:self];
+//    UINavigationController *pickerNav =[[UINavigationController alloc]initWithRootViewController:pickerController];
     if (_isSelectedPhotoArray.count!=0) {
         pickerController.selectedAssets = _isSelectedPhotoArray;
     }
@@ -68,10 +68,15 @@
     pickerController.sortAscendingByModificationDate =NO;
     //相册选择
     pickerController.pickingImage = YES;
+    pickerController.pickerVCType = SDPickerVCNav;
+    
     // pickerController.browserSelect =YES;      游览选择暂时未做，后续会添加上去，
   //  pickerController.pickingVideo =NO;        //暂时未做，后续会添加
-    [self.navigationController presentViewController:pickerNav animated:YES completion:nil];
+  //  [self.navigationController presentViewController:pickerNav animated:YES completion:nil];
     
+  //  [self.navigationController pushViewController:pickerController animated:YES];
+    
+    [self presentViewController:pickerController animated:YES completion:nil];
     
 }
 

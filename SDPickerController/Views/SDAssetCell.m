@@ -67,7 +67,6 @@
 -(void)setModel:(SDAssetModel *)model{
     _model= model;
     if (_photoBrowseSelect) {
-        
         _selectBtn.frame = CGRectMake(self.frame.size.width-44, 0, 44, 44);
     }else{
         _selectBtn.frame= self.bounds;
@@ -212,9 +211,7 @@
     _groupTitleLabel.text=model.name;
     _numberLabel.text =[NSString stringWithFormat:@"%zd",model.count];
     //此方法可获取封面图
-//    [[TZImageManager manager] getPostImageWithAlbumModel:model completion:^(UIImage *postImage) {
-//        
-//    }];
+
 }
 
 -(void)createUI{

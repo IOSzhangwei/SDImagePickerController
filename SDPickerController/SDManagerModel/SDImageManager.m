@@ -57,6 +57,7 @@ static CGFloat SDScreenScale;
              option.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"creationDate" ascending:self.sortAscendingByModificationDate]];
         }
         PHFetchResult *result =[PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+        
         for (PHAssetCollection *collection in result) {
             //过滤PHCollectionList
             if (![collection isKindOfClass:[PHAssetCollection class]]) continue;
@@ -64,6 +65,7 @@ static CGFloat SDScreenScale;
                 
                 PHFetchResult *result = [PHAsset fetchAssetsInAssetCollection:collection options:option];  //获取结果，option：描述信息
                 model =[self modelWithResult:result name:collection.localizedTitle];
+                
                 if (completion) {
                     completion(model);
                 }
@@ -98,6 +100,7 @@ static CGFloat SDScreenScale;
          }
          */
         PHFetchResult *smartAlbums = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+        
         PHFetchResult *Collections = [PHCollectionList fetchTopLevelUserCollectionsWithOptions:nil];
         for (PHAssetCollection *collection in smartAlbums) {
             if (![collection isKindOfClass:[PHAssetCollection class]]) continue;
