@@ -21,7 +21,11 @@
 
 效果：
 ===
+##1、选择相册分组导航栏模式
+
 ![ABC](http://zw.hiqianjin.com/01%281%29.gif) 
+
+##2、选择相册分组toolBar模式
 
 ![ABC](http://zw.hiqianjin.com/toolBar.gif) 
 
