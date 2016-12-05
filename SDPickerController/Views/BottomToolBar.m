@@ -25,6 +25,9 @@
     }
     return self;
 }
+
+
+
 -(void)createUI{
     
     UIButton *backBtn =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -46,13 +49,23 @@
     [self addSubview:_photoAlbumBtn];
     _photoAlbumBtn.backgroundColor =[UIColor clearColor];
     _photoAlbumBtn.titleLabel.font =[UIFont systemFontOfSize:18];
-    _photoAlbumBtn.sd_layout.heightIs(self.height).centerXEqualToView(self);
-    _photoAlbumBtn.titleLabel.sd_layout.leftSpaceToView(_photoAlbumBtn,5);
     [_photoAlbumBtn setTitle:@"相机胶卷" forState:UIControlStateNormal];
+    _photoAlbumBtn.size = CGSizeMake(120, self.height);
+    _photoAlbumBtn.centerX=self.centerX;
+#define albumBtnWidth 110
+#define imageWidth    14
+    NSString *str=@"相机胶卷";
+    CGSize btnSize = [str sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+    //icon_photos_arrowbottom
+   // [_photoAlbumBtn setImage:[UIImage SD_imageNamed:@"icon_photos_arrowup"] forState:UIControlStateNormal];
+    _photoAlbumBtn.imageEdgeInsets = UIEdgeInsetsMake(0, albumBtnWidth-imageWidth-5, 0, 10 - btnSize.width);
+    CGFloat titleRightInset = albumBtnWidth - 10 - btnSize.width;
+    if (titleRightInset < 10 + imageWidth) {
+        titleRightInset = 10 + imageWidth;
+    }
+    [_photoAlbumBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, (10 - 14), 0, titleRightInset)];
     [_photoAlbumBtn addTarget:self action:@selector(photoAlbumBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [_photoAlbumBtn setupAutoSizeWithHorizontalPadding:10 buttonHeight:self.height];
-    
-    
+
     _doneBtn =[UIButton buttonWithType:UIButtonTypeCustom];
     _doneBtn.tag = 202;
     _doneBtn.backgroundColor =[UIColor clearColor];
@@ -85,6 +98,15 @@
     
     
 }
+-(void)setPickerVCToolBar:(BOOL)pickerVCToolBar{
+    _pickerVCToolBar = pickerVCToolBar;
+    if (pickerVCToolBar) {
+        [_photoAlbumBtn setImage:[UIImage SD_imageNamed:@"icon_photos_arrowup"] forState:UIControlStateNormal];
+    }else{
+        [_photoAlbumBtn setImage:[UIImage SD_imageNamed:@"icon_photos_arrowbottom"] forState:UIControlStateNormal];
+        _pickerVCToolBar=!_pickerVCToolBar;
+    }
+}
 
 -(void)setOneSelect:(BOOL)oneSelect{
     _oneSelect=oneSelect;
@@ -106,6 +128,14 @@
 }
 
 -(void)photoAlbumBtnClick:(UIButton *)btn{
+    
+    
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        
+      btn.imageView.transform = _pickerVCToolBar?CGAffineTransformMakeRotation(M_PI):CGAffineTransformMakeRotation(0);
+    }];
+    _pickerVCToolBar=!_pickerVCToolBar;
     if (_toolBarBtnBlock) {
         _toolBarBtnBlock(btn);
     }

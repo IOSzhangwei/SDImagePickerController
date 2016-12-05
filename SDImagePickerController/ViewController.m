@@ -10,6 +10,7 @@
 #import "SDShowCell.h"
 #import "SDImagePickerController.h"
 #import "UIImage+SD.h"
+#import "SDImagePicker.h"
 @interface ViewController ()<SDImagePickControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate>
 
 
@@ -68,7 +69,7 @@
     pickerController.sortAscendingByModificationDate =NO;
     //相册选择
     pickerController.pickingImage = YES;
-    pickerController.pickerVCType = SDPickerVCNav;
+  //  pickerController.pickerVCType = SDPickerVCToolBar;
     
     // pickerController.browserSelect =YES;      游览选择暂时未做，后续会添加上去，
   //  pickerController.pickingVideo =NO;        //暂时未做，后续会添加

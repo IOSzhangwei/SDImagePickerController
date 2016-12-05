@@ -85,12 +85,25 @@
     _layerFrame = CGRectMake([UIScreen mainScreen].bounds.size.width/2.f - 250/2.f, [UIScreen mainScreen].bounds.size.height -68 -45*_albumData.count, 250, 45*_albumData.count);
     _tableView.height = 45*_albumData.count;
 }
+-(void)effectviewClick{
+    [self dismiss];
+}
+
 
 -(void)showPhotoAlbum:(UIView *)view{
     NSLog(@"显示显示");
     UIBlurEffect *blur = [UIBlurEffect effectWithStyle:UIBlurEffectStyleDark];
     _effectview = [[UIVisualEffectView alloc] initWithEffect:blur];
     _effectview.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height-50);
+    _effectview.userInteractionEnabled= YES;
+    UITapGestureRecognizer *tap =[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(effectviewClick)];
+    tap.numberOfTapsRequired = 1;
+    tap.numberOfTouchesRequired = 1;
+    [_effectview addGestureRecognizer:tap];
+    
+    
+    
+    
     [view insertSubview:_effectview atIndex:0];
     [view bringSubviewToFront:_effectview];
     [view bringSubviewToFront:self];

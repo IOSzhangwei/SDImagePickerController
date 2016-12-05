@@ -20,6 +20,9 @@ typedef void (^ToolBarBtnBlock)(UIButton * Btn);
 @property(nonatomic,strong)UIImageView *numberView;
 @property(nonatomic,strong)UIButton *photoAlbumBtn;
 
+@property(nonatomic)BOOL pickerVCToolBar;
+
+
 @property(nonatomic,assign)BOOL oneSelect;
 /**
    刷新ToolBar 状态
