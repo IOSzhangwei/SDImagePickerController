@@ -102,8 +102,8 @@
  @param info   为nil 。作为扩展参数
  */
 - (void)imagePickerController:(SDImagePickerController *)picker seletedCamera:(id)info;
-
-
+///返回按钮
+- (void)backImagePickerController:(SDImagePickerController *)picker;
 @end
 
 @interface SDCollectionView : UICollectionView

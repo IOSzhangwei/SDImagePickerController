@@ -55,7 +55,7 @@
 
 -(void)click:(UIButton *)sender{
     
-    SDImagePickerController *pickerController=[[SDImagePickerController alloc]initWithMaxImagesCount:9 columnNumber:4 delegate:self];
+    SDImagePickerController *pickerController=[[SDImagePickerController alloc]initWithMaxImagesCount:1 columnNumber:4 delegate:self];
 //    UINavigationController *pickerNav =[[UINavigationController alloc]initWithRootViewController:pickerController];
     if (_isSelectedPhotoArray.count!=0) {
         pickerController.selectedAssets = _isSelectedPhotoArray;
@@ -83,7 +83,7 @@
 
 #pragma mark ---SDImagePickControllerDelegate
 -(void)imagePickerController:(SDImagePickerController *)picker didFinishPickingPhotos:(NSArray<UIImage *> *)photos sourceAssets:(NSArray *)assets isSelectOriginalPhoto:(BOOL)isSelectOriginalPhoto{
-    
+ 
     [picker dismissViewControllerAnimated:YES completion:nil];
     _photosArray =[NSMutableArray arrayWithArray:photos];
     _isSelectedPhotoArray =[NSMutableArray arrayWithArray:assets];

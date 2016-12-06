@@ -318,6 +318,8 @@
     
     for (int i=0; i<_selectedModels.count; i++) {
         SDAssetModel *model = _selectedModels[i];
+        NSLog(@"===%@",model.asset);
+        
         [[SDImageManager manager] getPhotoWithAsset:model.asset completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
             if (isDegraded) {
                 return ;
@@ -340,7 +342,11 @@
 }
 
 -(void)backBtnClick{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    if ([self.pickerDelegate respondsToSelector:@selector(backImagePickerController:)]) {
+        [self.pickerDelegate backImagePickerController:self];
+    }else{
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark ---initView---
@@ -497,6 +503,10 @@
     }
     
     [[SDImageManager manager] getPhotoWithAsset:model.asset completion:^(UIImage *photo, NSDictionary *info, BOOL isDegraded) {
+        
+        if (isDegraded) {
+            return ;
+        }
         NSArray *array =@[photo];
         NSArray *assetArray =@[model.asset];
         NSArray *infoArray =@[info];

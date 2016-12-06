@@ -5,6 +5,11 @@
 //  Created by 张伟 on 2016/11/21.
 //  Copyright © 2016年 张伟. All rights reserved.
 //
+/**
+ 
+ PhotoKit 相关博客：http://ju.outofmemory.cn/entry/209200
+
+ */
 
 #import "SDImageManager.h"
 #import <AssetsLibrary/AssetsLibrary.h>
@@ -242,10 +247,13 @@ static CGFloat SDScreenScale;
     if (fullScreenWidth > _photoPreviewMaxWidth) {
         fullScreenWidth = _photoPreviewMaxWidth;
     }
+    
     return [self getPhotoWithAsset:asset photoWidth:fullScreenWidth completion:completion];
+    
 }
 
 - (PHImageRequestID)getPhotoWithAsset:(id)asset photoWidth:(CGFloat)photoWidth completion:(void (^)(UIImage *, NSDictionary *, BOOL isDegraded))completion {
+    
     if ([asset isKindOfClass:[PHAsset class]]) {
         CGSize imageSize;
         if (photoWidth < SDScreenWidth && photoWidth < _photoPreviewMaxWidth) {
@@ -260,11 +268,18 @@ static CGFloat SDScreenScale;
         // 修复获取图片时出现的瞬间内存过高问题
         PHImageRequestOptions *option = [[PHImageRequestOptions alloc] init];
         option.resizeMode = PHImageRequestOptionsResizeModeFast;
+        
+        /**
+         resultHandler 可能会被多次调用，这种情况就是图像需要从 iCloud 中下载的情况。在?requestImageForAsset 返回的内容中，一开始的那一次请求中会返回一个小尺寸的图像版本，当高清图像还在下载时，开发者可以首先给用户展示这个低清的图像版本，然后 block 在多次调用后，最终会返回高清的原图
+         BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
+         */
         PHImageRequestID imageRequestID = [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:imageSize contentMode:PHImageContentModeAspectFill options:option resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            
             BOOL downloadFinined = (![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey]);
             if (downloadFinined && result) {
                 result = [self fixOrientation:result];
                 if (completion) completion(result,info,[[info objectForKey:PHImageResultIsDegradedKey] boolValue]);
+                
             }
             //从iCloud下载图片
             if ([info objectForKey:PHImageResultIsInCloudKey] && !result) {
